@@ -5,8 +5,10 @@ struct node {
     int value;
     struct node *next;
 };
+// Function Declarations
 int sumNodes(struct node *list);
 struct node *deleteFirstInstance(struct node *list, int value);
+
 // Function to create a node in memory
 struct node *createNode(int value) {
     struct node *new = malloc(sizeof(struct node));
@@ -79,6 +81,7 @@ struct node *deleteFirstInstance(struct node *list, int value) {
     // 1. Deleting the head
     // 2. Deleting everywhere else
 
+    // Empty List
     if (list == NULL) return NULL;
     struct node *head = list; 
 
@@ -91,6 +94,7 @@ struct node *deleteFirstInstance(struct node *list, int value) {
     }
     struct node *prev = list;
     list = list->next;
+    // 2. Deleting everywhere else
     while (list != NULL) {
         if (list->value == value) {
             struct node *del = list;
