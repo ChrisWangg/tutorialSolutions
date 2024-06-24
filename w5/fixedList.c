@@ -8,8 +8,8 @@ void printList(struct node *node);
 void freeList(struct node *head);
 
 struct node {
-    int data;
-    struct node *next;
+	int data;
+	struct node *next;
 };
 
 int main() {
@@ -27,15 +27,15 @@ int main() {
 	Appending a node to the end of a linked list
 */
 struct node *appendList(struct node *a, int data) {
-    struct node *newNode = createNode(data);
+	struct node *newNode = createNode(data);
 	if (a == NULL) {
 		a = newNode;
 	} else {
-        struct node *lastNode = a;
-        while (lastNode->next != NULL) {
-            lastNode = lastNode->next;
-        }
-        lastNode->next = newNode;
+		struct node *lastNode = a;
+		while (lastNode->next != NULL) {
+			lastNode = lastNode->next;
+		}
+		lastNode->next = newNode;
 	}
 	return a;
 }
@@ -45,8 +45,8 @@ struct node *appendList(struct node *a, int data) {
 */
 struct node *createNode(int data) {
 	struct node *newNode = malloc(sizeof(struct node));
-    newNode->data = data;
-    newNode->next = NULL;
+	newNode->data = data;
+	newNode->next = NULL;
 	return newNode;
 
 }
@@ -54,11 +54,11 @@ struct node *createNode(int data) {
 	Prints a list out to stdout
 */
 void printList(struct node *node) {
-    while (node->next != NULL) {
-        printf("%d -> ", node->data);
-        node = node->next;
-    }
-    printf("%d\n", node->data);
+	while (node->next != NULL) {
+		printf("%d -> ", node->data);
+		node = node->next;
+	}
+	printf("%d\n", node->data);
 }
 /*
 	Free's the memory associated to a linked list
@@ -69,9 +69,9 @@ void freeList(struct node *head) {
 	}
 	struct node *temp = head;
 	while (head != NULL) {
-	    temp = head;
-	    head = head->next;
-	    free(temp);
+		temp = head;
+		head = head->next;
+		free(temp);
 	}
 }
 
