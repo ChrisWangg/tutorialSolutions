@@ -1,0 +1,111 @@
+course	name	program
+COMP1927	Jane	3970
+COMP1927	John	3978
+COMP1927	Pete	3978
+MATH1231	John	3978
+MATH1231	Adam	3970
+PSYC1011	Adam	3970
+PSYC1011	Jane	3970
+
+
+a) Stable
+course	name	program
+MATH1231	Adam	3970
+PSYC1011	Adam	3970
+COMP1927	Jane	3970
+PSYC1011	Jane	3970
+COMP1927	John	3978
+MATH1231	John	3978
+COMP1927	Pete	3978
+
+b) Unstable
+course	name	program
+MATH1231	Adam	3970
+PSYC1011	Adam	3970
+COMP1927	Jane	3970
+PSYC1011	Jane	3970
+COMP1927	John	3978
+MATH1231	John	3978
+COMP1927	Pete	3978
+
+
+
+1, 4, 5, 6, 7, 2, 3, 4, 7, 9
+
+1, 4, 5, 6, 7 | 2, 3, 4, 7, 9
+
+1, 4, 5, | 6, 7     |     2, 3, 4, | 7, 9
+
+1, 4 | 5      | 6 | 7       | 2, 3 | 4     | 7 | 9
+
+1 | 4 | 5 | 6 | 7 | 2 | 3 | 4 | 7 | 9
+
+
+
+
+
+{ 5, 3, 9, 6, 4, 2, 9, 8, 1, 7 }
+
+
+            [3, 4, 2, 1] 5 [9, 6, 9, 8, 7]
+
+           [2, 1] 3 [4]                [6, 9, 8, 7] 9 []
+
+          [1] 2 []                         []  6  [9,8,7]
+
+                                                   [8,7] 9 []
+
+                                                  [7] 8 []
+
+
+
+
+
+{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+
+[] 0 [1, 2, 3, 4, 5, 6, 7, 8, 9]
+         [] 1 [2, 3, 4, 5, 6, 7, 8, 9]
+
+
+{ 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 }
+
+
+[ 8, 7, 6, 5, 4, 3, 2, 1, 0] 9
+                   [7, 6, 5, 4, 3, 2, 1, 0] 8
+
+
+
+
+[0] set
+[1] how
+[2] cup
+[3] hob
+[4] paw
+[5] hat
+[6] cob
+[7] pot
+
+
+[3] hob
+[6] cob
+[2] cup
+[0] set
+[5] hat
+[7] pot
+[1] how
+[4] paw
+
+
+[5] hat
+[4] paw
+[0] set
+[3] hob
+[6] cob
+[7] pot
+[1] how
+[2] cup
+
+
+
+
+
