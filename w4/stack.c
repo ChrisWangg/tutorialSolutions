@@ -4,20 +4,23 @@
 #include "stack.h"
 
 // Definition of the node structure
-typedef struct Node {
+struct node {
     int data;
-    struct Node *next;
-} Node;
+    struct node *next;
+};
 
 // Definition of the stack structure
-struct Stack {
-    Node *top;
+struct stack {
+    struct node *top;
     int size;
 };
 
+typedef struct node* Node;
+typedef struct stack* Stack;
+
 // Creates a new empty stack
-Stack *StackNew(void) {
-    Stack *s = (Stack *)malloc(sizeof(Stack));
+Stack StackNew(void) {
+    Stack s = malloc(sizeof(struct stack));
     if (s == NULL) {
         fprintf(stderr, "Memory allocation failed\n");
         exit(1);
@@ -28,8 +31,8 @@ Stack *StackNew(void) {
 }
 
 // Pushes an item onto the stack
-void StackPush(Stack *s, int item) {
-    Node *newNode = (Node *)malloc(sizeof(Node));
+void StackPush(Stack s, int item) {
+    Node newNode = malloc(sizeof(struct node));
     if (newNode == NULL) {
         fprintf(stderr, "Memory allocation failed\n");
         exit(1);
@@ -42,12 +45,12 @@ void StackPush(Stack *s, int item) {
 
 // Pops an item from the stack and returns it
 // Assumes that the stack is not empty
-int StackPop(Stack *s) {
+int StackPop(Stack s) {
     if (s->top == NULL) {
         fprintf(stderr, "Stack is empty\n");
         exit(1);
     }
-    Node *temp = s->top;
+    Node temp = s->top;
     int poppedItem = temp->data;
     s->top = s->top->next;
     free(temp);
@@ -56,19 +59,20 @@ int StackPop(Stack *s) {
 }
 
 // Returns the number of items on the stack
-int StackSize(Stack *s) {
+int StackSize(Stack s) {
     return s->size;
 }
 
-bool StackIsEmpty(Stack *s) {
+// Returns whether the stack is empty
+bool StackIsEmpty(Stack s) {
     if (s->size == 0) return true;
     return false;
 }
 
 // Frees the stack
-void StackFree(Stack *s) {
+void StackFree(Stack s) {
     while (s->top != NULL) {
-        Node *temp = s->top;
+        Node temp = s->top;
         s->top = s->top->next;
         free(temp);
     }

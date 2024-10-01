@@ -6,8 +6,8 @@
 #include "stack.h"
 
 struct queue {
-	Stack *s1;
-	Stack *s2;
+	Stack s1;
+	Stack s2;
 };
 
 Queue QueueNew(void) {
@@ -18,12 +18,12 @@ Queue QueueNew(void) {
 }
 
 void QueueEnqueue(Queue q, int item) {
-	StackPush(q->s1, item);
+    StackPush(q->s1, item);
 }
 
 int QueueDequeue(Queue q) {
 	if (StackIsEmpty(q->s2)) {
-        while (!StackIsEmpty(q->s1)){
+        while (!StackIsEmpty(q->s1)) {
             int item = StackPop(q->s1);
             StackPush(q->s2, item);
         }

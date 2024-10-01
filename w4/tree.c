@@ -10,6 +10,7 @@ struct node {
 int max(int a, int b) {
     return (a > b) ? a : b;
 }
+
 struct node *newNode(int value) {
     struct node *new = malloc(sizeof(struct node));
     new->value = value;
@@ -39,49 +40,55 @@ int countNodes(struct node *t) {
 }
 
 int countOdds(struct node *t) {
-    if (t == NULL) return 0;
-    if (t->value % 2 == 1) {
+    if (t == NULL) {
+        return 0;
+    } else if (t->value % 2 == 1) {
         return 1 + countOdds(t->left) + countOdds(t->right);
-    }
+    } 
     return countOdds(t->left) + countOdds(t->right);
 }
 
 int bstCountInternal(struct node *t) {
-    if (t == NULL) return 0;
-    if (t->left == NULL && t->right == NULL) return 0;
+    if (t == NULL) {
+        return 0;
+    } else if (t->left == NULL && t->right == NULL) {
+        return 0;
+    } 
     return 1 + bstCountInternal(t->left) + bstCountInternal(t->right);
 }
 
 int bstHeight(struct node *t) {
-    if (t == NULL) return -1;
+    if (t == NULL) {
+        return -1;
+    }
     int lh = bstHeight(t->left);
     int rh = bstHeight(t->right);
-
     return max(lh, rh) + 1;
 }
+
 int bstNodeLevel(struct node *t, int key) { 
-    if (t == NULL) {
-		return -1;
-	} else if (t->value == key) {
-		return 0;
-	} else if (key < t->value) {
-		int level = bstNodeLevel(t->left, key);
-		if (level == -1) return -1;
-		return level + 1;
-	} else {
-		int level = bstNodeLevel(t->right, key);
-		if (level == -1) return -1;
-		return level + 1;
-	}
+    if (t == NULL) return -1;
+    else if (t->value == key) {
+        return 0;
+    } else if (key < t->value) {
+        int level = bstNodeLevel(t->left, key);
+        if (level == -1) return -1;
+        return level + 1;
+    } else {
+        int level = bstNodeLevel(t->right, key);
+        if (level == -1) return -1;
+        return level + 1;
+    }
 }
-int bstCountGreater(struct node *t, int val) { 
-    if (t == NULL) {
-		return 0;
-	} else if (t->value > val) {
-		return 1 + bstCountGreater(t->left, val) + bstCountGreater(t->right, val);
-	} else {
-		return bstCountGreater(t->right, val);
-	}
+
+int bstCountGreater(struct node *t, int val) {
+	if (t == NULL) {
+        return 0;
+    } else if (t->value > val) {
+        return 1 + bstCountGreater(t->left, val) + bstCountGreater(t->right, val);
+    } else {
+        return bstCountGreater(t->right, val);
+    }
 }
 
 
@@ -94,4 +101,9 @@ int main(void) {
     printf("Count of odd nodes %d\n", countOdds(t));
     printf("Count of internal nodes %d\n", bstCountInternal(t));
     printf("Height %d\n", bstHeight(t));
+    printf("Level of 2: %d\n", bstNodeLevel(t, 2));
+    printf("Level of 3: %d\n", bstNodeLevel(t, 3));
+    printf("Level of 1: %d\n", bstNodeLevel(t, 1));
+    printf("Level of something that doesn't exist in tree: %d\n", bstNodeLevel(t, 99));
+    printf("Number of terms greater than 1: %d\n", bstCountGreater(t, 1));
 }

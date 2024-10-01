@@ -16,6 +16,7 @@ void QueueEnqueue(Queue q, int item);
 // Assumes that the queue is not empty
 int QueueDequeue(Queue q);
 
+// Returns whether a queue is empty
 bool QueueIsEmpty(Queue q);
 
 // Frees the queue
