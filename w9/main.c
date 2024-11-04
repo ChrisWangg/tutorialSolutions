@@ -10,9 +10,6 @@
 
 bool threeSum(int arr[], int size, int sum);
 int fibonacci(int n);
-long long fibonacci_dp(long long *dp, int n);
-long long fibonacciHelper(int n);
-
 int nthFibonacciUtil(int n, int memo[]);
 int nthFibonacci(int n);
 
