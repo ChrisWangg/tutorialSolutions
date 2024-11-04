@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -O2
 
 # The executable file to be generated
-TARGET = hashtable_test
+TARGET = test_hashtable
 
 # Source files
 SRCS = main.c HashTable.c

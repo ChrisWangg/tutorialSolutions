@@ -9,6 +9,12 @@
 #define GREEN_COLOR   "\x1b[32m"
 
 bool threeSum(int arr[], int size, int sum);
+int fibonacci(int n);
+long long fibonacci_dp(long long *dp, int n);
+long long fibonacciHelper(int n);
+
+int nthFibonacciUtil(int n, int memo[]);
+int nthFibonacci(int n);
 
 int main(void) {
     struct TestCase {
@@ -77,6 +83,9 @@ int main(void) {
 
     printf("\nTotal tests passed: %d/%d\n", passedTests, numTestCases);
 
+
+    printf("Fibonacci result of n = 40 %d\n", nthFibonacci(60));
+
     return 0;
 }
 
@@ -94,3 +103,50 @@ bool threeSum(int arr[], int size, int sum) {
     HashTableFree(ht);
     return false;
 }
+
+
+int fibonacci(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    else if (n == 1) {
+        return 1;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+
+int nthFibonacciUtil(int n, int memo[]) {
+    if (n <= 1) {
+        return n;
+    }
+    if (memo[n] != -1) {
+        return memo[n];
+    }
+
+    if (memo[n - 1] == -1) {
+        memo[n - 1] = nthFibonacciUtil(n - 1, memo);
+    }
+
+    if (memo[n - 2] == -1) {
+        memo[n - 2] = nthFibonacciUtil(n - 2, memo);
+    }
+
+    memo[n] = memo[n - 1] + memo[n - 2];
+
+    return memo[n];
+}
+
+
+int nthFibonacci(int n) {
+
+    int *memo = malloc(sizeof(int) * (n + 1));
+    for (int i = 0; i <= n; i++) {
+        memo[i] = -1;
+    }
+
+    int res = nthFibonacciUtil(n, memo);
+    free(memo);
+    return res;
+}
+
